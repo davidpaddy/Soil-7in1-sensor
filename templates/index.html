@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="refresh" content="2"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Soil Sensor Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e7eef8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .sensor-output {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #5cb85c;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .sensor-description {
+            background-color: #f2f2f2;
+            border-left: 4px solid #337ab7;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IoT Soil Sensor Dashboard</h1>
+        <p>Welcome to our IoT project's real-time dashboard! Below you will find the live output data from our advanced 7-in-1 soil sensor, providing valuable insights into soil conditions for precision agriculture.</p>
+        
+        <div class="sensor-description">
+            <h2>Sensor Output Description:</h2>
+            <p>This 7-in-1 soil sensor provides critical data for agricultural and environmental research. It measures:</p>
+            <ul>
+                <li><strong>Nitrogen (N)</strong>: Essential for plant growth, high levels can cause excessive foliage with delayed flowering.</li>
+                <li><strong>Phosphorous (P)</strong>: Important for root development, too much can harm beneficial soil microorganisms.</li>
+                <li><strong>Potassium (K)</strong>: Regulates plant metabolism and affects water inside and outside of plant cells.</li>
+                <li><strong>Soil Moisture</strong>: Vital for plant health, soil moisture level is a key factor in water management.</li>
+                <li><strong>Temperature</strong>: Soil temperature influences seed germination rates and plant growth.</li>
+                <li><strong>Electrical Conductivity (EC)</strong>: Indicates the amount of salts in soil, which affects nutrient availability.</li>
+                <li><strong>pH Level</strong>: Affects nutrient availability and soil structure, influencing plant health.</li>
+            </ul>
+        </div>
 
+        <div class="sensor-output">
+            <h2>Real-Time Sensor Data:</h2>
+            <ul id="data-list">
+                {% for data_dict in data %}
+                    {% for key, value in data_dict.items() %}
+                        <li>{{ value }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <footer>
+        IoT Soil Sensor Project © {{ current_year }}
+    </footer>
+    <script>
+        // Script to get the current year and display in the footer
+        document.addEventListener('DOMContentLoaded', function() {
+            var currentYear = new Date().getFullYear();
+            document.querySelector('footer').innerHTML = `IoT Soil Sensor Project © ${currentYear}`;
+        });
+    </script>
+</body>
+</html>
