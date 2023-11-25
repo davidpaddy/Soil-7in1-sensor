@@ -55,16 +55,3 @@ if ser is not None:
     main_loop(ser)
 else:
     print("Failed to connect to the serial port. Exiting.")
-
-
-# In[7]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
